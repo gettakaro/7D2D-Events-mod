@@ -19,14 +19,12 @@ namespace Takaro
             // Register event handlers
             ModEvents.GameStartDone.RegisterHandler(GameAwake);
             ModEvents.GameShutdown.RegisterHandler(GameShutdown);
-            ModEvents.SavePlayerData.RegisterHandler(SavePlayerData);
             ModEvents.PlayerSpawnedInWorld.RegisterHandler(PlayerSpawnedInWorld);
             ModEvents.PlayerDisconnected.RegisterHandler(PlayerDisconnected);
             ModEvents.ChatMessage.RegisterHandler(ChatMessage);
             ModEvents.PlayerLogin.RegisterHandler(PlayerLogin);
             ModEvents.EntityKilled.RegisterHandler(EntityKilled);
             ModEvents.GameMessage.RegisterHandler(GameMessage);
-            ModEvents.CalcChunkColorsDone.RegisterHandler(CalcChunkColorsDone);
 
             Log.Out("[Takaro] Mod initialized successfully");
         }
@@ -121,11 +119,6 @@ namespace Takaro
             }
         }
 
-        private void SavePlayerData(ClientInfo cInfo, PlayerDataFile playerDataFile)
-        {
-            // Can be used to track player stats if needed
-        }
-
         private bool PlayerLogin(ClientInfo cInfo, string compatibilityVersion, StringBuilder sb)
         {
             return true;
@@ -146,11 +139,6 @@ namespace Takaro
                 _webSocketClient?.SendChatMessage(cInfo, msg);
             }
             return true;
-        }
-
-        private void CalcChunkColorsDone(Chunk chunk)
-        {
-            // Can be used for world events if needed
         }
     }
 }
